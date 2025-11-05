@@ -154,12 +154,6 @@
     <None Include="Resources\open.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Groundfloorbutton1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\firstfloorbutton.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\elevatorup.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -169,10 +163,13 @@
     <None Include="Resources\abc.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\emergency.jpg" />
+    <None Include="Resources\black.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\black.jpg" />
+    <None Include="Resources\G btn1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1 btn image.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

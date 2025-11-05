@@ -63,6 +63,16 @@ namespace CtrlElevator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1_btn_image {
+            get {
+                object obj = ResourceManager.GetObject("1 btn image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap abc {
             get {
                 object obj = ResourceManager.GetObject("abc", resourceCulture);
@@ -153,29 +163,9 @@ namespace CtrlElevator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap emergency {
+        internal static System.Drawing.Bitmap G_btn1 {
             get {
-                object obj = ResourceManager.GetObject("emergency", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap firstfloorbutton {
-            get {
-                object obj = ResourceManager.GetObject("firstfloorbutton", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Groundfloorbutton1 {
-            get {
-                object obj = ResourceManager.GetObject("Groundfloorbutton1", resourceCulture);
+                object obj = ResourceManager.GetObject("G btn1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
