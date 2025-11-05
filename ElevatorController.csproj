@@ -105,6 +105,7 @@
     <Compile Include="ElevatorGui.Designer.cs">
       <DependentUpon>ElevatorGui.cs</DependentUpon>
     </Compile>
+    <Compile Include="ElevatorStatePattern.cs" />
     <Compile Include="GlobalConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

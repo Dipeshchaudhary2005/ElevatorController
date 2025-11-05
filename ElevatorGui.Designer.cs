@@ -66,12 +66,12 @@ namespace ElevatorController
             // 
             // timer_up
             // 
-            this.timer_up.Interval = 10;
+            this.timer_up.Interval = 5;
             this.timer_up.Tick += new System.EventHandler(this.timer_up_Tick);
             // 
             // timer_down
             // 
-            this.timer_down.Interval = 10;
+            this.timer_down.Interval = 5;
             this.timer_down.Tick += new System.EventHandler(this.timer_down_Tick);
             // 
             // timer_door_open_up

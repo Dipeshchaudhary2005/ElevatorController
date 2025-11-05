@@ -15,6 +15,12 @@ namespace ElevatorController
         // Single DbCommand instance
         DbCommand dbcmd = new DbCommand();
 
+        //ADDED: State Pattern Connection
+        private ElevatorStateContext stateContext = new ElevatorStateContext();
+
+        // Timer for automatic door closing
+        private Timer autoCloseTimer = new Timer();
+
         public ElevatorGui()
         {
             InitializeComponent();
@@ -37,10 +43,35 @@ namespace ElevatorController
 
                 // Initialize floor indicator to show "G"
                 UpdateFloorIndicator("G");
+
+                //Configure auto close timer (close after 3 seconds)
+                autoCloseTimer.Interval = 3000; // 3 seconds
+                autoCloseTimer.Tick += AutoCloseTimer_Tick;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error connecting to DB: " + ex.Message);
+            }
+        }
+
+        //Automatic door closing method
+        private void AutoCloseTimer_Tick(object sender, EventArgs e)
+        {
+            autoCloseTimer.Stop(); // Stop the timer
+
+            if (arrive_G)
+            {
+                // Auto close ground floor doors
+                timer_door_close_down.Enabled = true;
+                timer_door_open_down.Enabled = false;
+                SaveAndRefreshLog("Ground Floor Door Auto Closed");
+            }
+            else if (arrive_1)
+            {
+                // Auto close first floor doors
+                timer_door_close_up.Enabled = true;
+                timer_door_open_up.Enabled = false;
+                SaveAndRefreshLog("First Floor Door Auto Closed");
             }
         }
 
@@ -154,6 +185,9 @@ namespace ElevatorController
                 SaveAndRefreshLog("First Floor Door Opened");
 
                 btnDown.Enabled = true;
+
+                //Start auto close timer for first floor
+                autoCloseTimer.Start();
             }
         }
 
@@ -168,6 +202,9 @@ namespace ElevatorController
             {
                 timer_door_close_up.Enabled = false;
                 SaveAndRefreshLog("First Floor Door Closed");
+
+                //Stop auto close timer when doors are manually closed
+                autoCloseTimer.Stop();
 
                 if (go_up)
                 {
@@ -188,6 +225,9 @@ namespace ElevatorController
             {
                 timer_door_open_down.Enabled = false;
                 SaveAndRefreshLog("Ground Floor Door Opened");
+
+                //Start auto close timer for ground floor
+                autoCloseTimer.Start();
             }
         }
 
@@ -202,6 +242,9 @@ namespace ElevatorController
             {
                 timer_door_close_down.Enabled = false;
                 SaveAndRefreshLog("Ground Floor Door Closed");
+
+                //Stop auto close timer when doors are manually closed
+                autoCloseTimer.Stop();
 
                 if (go_down)
                 {
@@ -278,6 +321,9 @@ namespace ElevatorController
         // BUTTON EVENTS - Door Control
         private void btnOpen_Click(object sender, EventArgs e)
         {
+            //Stop auto close timer when manually opening doors
+            autoCloseTimer.Stop();
+
             if (arrive_G)
             {
                 timer_door_open_down.Enabled = true;
@@ -292,6 +338,9 @@ namespace ElevatorController
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            //Stop auto close timer when manually closing doors
+            autoCloseTimer.Stop();
+
             if (arrive_G)
             {
                 timer_door_close_down.Enabled = true;
